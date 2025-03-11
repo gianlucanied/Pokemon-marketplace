@@ -43,15 +43,17 @@ function displayCards(cards) {
             }
         }
 
+        const expansion = card.set ? card.set.name : "Sconosciuta";
+
         cardElement.innerHTML = `
             <img src="${card.images.small}" alt="${card.name}" class="card-img">
             <h3>${card.name}</h3>
-            <p>Valore: ${price}</p>
+            <p><strong>Prezzo di mercato:</strong> ${price}</p>
+            <p><strong>Espansione:</strong> ${expansion}</p> <!-- Mostra l'espansione -->
         `;
 
         cardContainer.appendChild(cardElement);
     });
-
 
     document.querySelectorAll(".card-img").forEach(img => {
         img.addEventListener("click", function () {
@@ -59,7 +61,6 @@ function displayCards(cards) {
             document.getElementById("image-modal").style.display = "flex";
         });
     });
-
 
     document.querySelector(".close").addEventListener("click", function () {
         document.getElementById("image-modal").style.display = "none";
@@ -72,6 +73,7 @@ function displayCards(cards) {
         }
     });
 }
+
 
 
 // searchInput.addEventListener("input", () => {
